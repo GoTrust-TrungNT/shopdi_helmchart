@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "shopdi_auth_system_test.fullname" . }}
+  name: {{ include "shopdi-auth-system-test.fullname" . }}
   labels:
-    {{- include "shopdi_auth_system_test.labels" . | nindent 4 }}
+    {{- include "shopdi-auth-system-test.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "shopdi_auth_system_test.selectorLabels" . | nindent 6 }}
+      {{- include "shopdi-auth-system-test.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "shopdi_auth_system_test.selectorLabels" . | nindent 8 }}
+        {{- include "shopdi-auth-system-test.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "shopdi_auth_system_test.serviceAccountName" . }}
+      serviceAccountName: {{ include "shopdi-auth-system-test.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -50,7 +50,6 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-
           # livenessProbe:
           #   httpGet:
           #     path: /

@@ -1,18 +1,28 @@
-# Default values for shopdi_backend_system_test.
+# Default values for shopdi-auth-system-test.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
+  repository: nhlinh/shopdi_auth_system_test
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
-imagePullSecrets: []
+ASPNET_VERSION: 5.0.15
+ASPNETCORE_ENVIRONMENT: Staging
+ASPNETCORE_URLS: http://+:80
+DOTNET_RUNNING_IN_CONTAINER: "true"
+DOTNET_VERSION: 5.0.15
+PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+imagePullSecrets:
+  - name: "dockerhub-nhlinh"
 nameOverride: ""
 fullnameOverride: ""
+
+container_name: shopdi-auth-system-test
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -41,20 +51,20 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: auth-dev.shopdi.io
       paths:
         - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+          pathType: Prefix
+  tls:
+    - secretName: shopdi.io-tls
+      hosts:
+        - '*.shopdi.io'
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
