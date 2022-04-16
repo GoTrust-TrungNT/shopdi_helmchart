@@ -50,21 +50,22 @@ service:
   type: ClusterIP
   port: 80
 
+
 ingress:
   enabled: true
   className: ""
   annotations:
-     kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: auth.shopdi.mrbonus.com
+    - host: auth-dev.shopdi.io
       paths:
         - path: /
           pathType: Prefix
-  tls: []
-  #  - secretName: shopdi.io-tls
-  #    hosts:
-  #      - chart-example.local
+  tls:
+    - secretName: shopdi.io-tls
+      hosts:
+        - '*.shopdi.io'
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
