@@ -22,7 +22,7 @@ imagePullSecrets:
 nameOverride: ""
 fullnameOverride: ""
 
-container_name: shopdi_auth_system_test
+container_name: shopdi-auth-system-test
 
 serviceAccount:
   # Specifies whether a service account should be created

@@ -1,6 +1,6 @@
 questions:
 - variable: container_name
-  default: shopdi_auth_system_test
+  default: shopdi-auth-system-test
   description: "Use default Container Name settings."
   label: Use default Container Name
   type: string
