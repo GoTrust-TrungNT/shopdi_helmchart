@@ -52,7 +52,7 @@ ingress:
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: frontend-test.shopdi.io
+    - host: frontend-stag.shopdi.io
       paths:
         - path: /
           pathType: Prefix

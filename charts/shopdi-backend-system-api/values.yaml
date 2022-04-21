@@ -58,7 +58,7 @@ ingress:
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: dev-api.shopdi.io
+    - host: apigw.shopdi.io
       paths:
         - path: /
           pathType: Prefix

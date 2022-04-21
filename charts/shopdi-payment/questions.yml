@@ -1,6 +1,6 @@
 questions:
 - variable: container_name
-  default: shopdi-auth-system-api
+  default: shopdi-payment
   description: "Use default Container Name settings."
   label: Use default Container Name
   type: string
@@ -49,7 +49,7 @@ questions:
   group: "Environments"
 
 - variable: image.repository
-  default: "nhlinh/shopdi_auth_system"
+  default: "nhlinh/shopdi_payment"
   description: "Use default Image Repository settings."
   label: Image Repository
   type: string
@@ -70,9 +70,8 @@ questions:
   group: "Image Repository"
 
 - variable: ingress.hosts.host
-  default: "auth.shopdi.io"
+  default: "payment.shopdi.io"
   description: "Use default host."
   label: Ingress Hosts 
   type: string
   group: "Ingress"
-

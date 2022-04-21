@@ -68,3 +68,10 @@ questions:
   label: Image Tag
   type: string
   group: "Image Repository"
+
+- variable: ingress.hosts.host
+  default: "frontend-stag.shopdi.io"
+  description: "Use default host."
+  label: Ingress Hosts 
+  type: string
+  group: "Ingress"
